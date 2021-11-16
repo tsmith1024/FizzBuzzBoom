@@ -28,6 +28,7 @@
 		A624E9C427430D6D0017B83D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		A624E9CA274310040017B83D /* GameResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameResult.swift; sourceTree = "<group>"; };
 		A624E9CC274429680017B83D /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		A624E9CE2744301A0017B83D /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -44,6 +45,7 @@
 		A624E9AA27430D690017B83D = {
 			isa = PBXGroup;
 			children = (
+				A624E9CE2744301A0017B83D /* README.md */,
 				A624E9B527430D690017B83D /* FizzBuzzBoom */,
 				A624E9B427430D690017B83D /* Products */,
 			);
