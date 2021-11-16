@@ -14,6 +14,14 @@ struct GameResult {
         isCorrect ? "✅" : "❌"
     }
     
+    var actualDisplay: String {
+        value + " = " + actual.rawValue
+    }
+    
+    var guessDisplay: String {
+        "\(guess.rawValue) \(correctDisplay)"
+    }
+    
     enum Guess: String {
         case fizz = "🍾"
         case buzz = "🐝"
@@ -21,7 +29,7 @@ struct GameResult {
         case none = "💥"
         
         init(fromInt value: Int) {
-            if value % 15 == 0 {
+            if value % 16 == 0 {
                 self = .fizzbuzz
             } else if value % 3 == 0 {
                 self = .fizz

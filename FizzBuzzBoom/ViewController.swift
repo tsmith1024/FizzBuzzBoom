@@ -9,6 +9,7 @@ class ViewController: UIViewController {
             currentValueLabel.text = "\(currentValue)"
         }
     }
+    
     var results: [GameResult] = [] {
         didSet {
             tableView.reloadData()
@@ -17,22 +18,19 @@ class ViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        pickNumber()
-        // Do any additional setup after loading the view.
     }
     
     func pickNumber() {
-        currentValue = Int.random(in: 1...1000)
+        currentValue = Int.random(in: 1...Constants.maxQuestionValue)
     }
     
     @IBAction func makeGuessPressed(_ sender: UIButton) {
         guard let buttonText = sender.titleLabel?.text else {
             return
-        }
         
         let guess = GameResult.Guess(rawValue: buttonText) ?? GameResult.Guess.none
         let result = GameResult(value: currentValue, guess: guess)
-        results.insert(result, at: 0)
+        results.append(result)
         pickNumber()
     }
 }
@@ -43,13 +41,11 @@ extension ViewController: UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "GameResultCell", for: indexPath)
+        let cell = tableView.dequeueReusableCell(withIdentifier: Constants.resultCellIdentifier, for: indexPath)
         let gameResult = results[indexPath.row]
-        cell.textLabel!.text = "\(gameResult.value) = \(gameResult.actual.rawValue)"
-        cell.detailTextLabel!.text = "\(gameResult.guess.rawValue) \(gameResult.correctDisplay)"
+        cell.textLabel = gameResult.actualDisplay
+        cell.detailTextLabel?.text = gameResult.correctDisplay
         
         return cell
     }
-    
-    
 }
